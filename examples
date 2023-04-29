@@ -1,0 +1,29 @@
+LPVOID VirtualAllocEx(
+  HANDLE hProcess,
+  // some comment to try and throw off structure detection
+  LPVOID lpAddress,
+  // another comment
+  SIZE_T dwSize,
+  // arbitrary text
+  DWORD  flAllocationType,
+  DWORD  flProtect
+  // foo
+);
+
+// this shouldn't match because it declares an LPVOID first instead of a HANDLE
+LPVOID VirtualAllocExDisordered(
+  LPVOID lpAddress,
+  HANDLE hProcess,
+  SIZE_T dwSize,
+  DWORD  flAllocationType,
+  DWORD  flProtect
+);
+
+// function name is irrelevant
+LPVOID NotVirtualAlloc(
+  HANDLE hProcess,
+  LPVOID lpAddress,
+  SIZE_T dwSize,
+  DWORD  flAllocationType,
+  DWORD  flProtect
+);
